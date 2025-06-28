@@ -1,3 +1,9 @@
+:root {
+  --white: hsl(0, 0%, 98%);
+  --mediumGrey: hsl(0, 0%, 41%);
+  --black: hsl(0, 0%, 8%);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,11 +17,11 @@ body {
   color: var(--black);
 }
 
-:root {
-  --white: hsl(0, 0%, 98%);
-  --mediumGrey: hsl(0, 0%, 41%);
-  --black: hsl(0, 0%, 8%);
+.container {
+  width: 95%;
+  margin: auto;
 }
+
 
 ul {
   list-style: none;
@@ -26,9 +32,4 @@ select {
   font-family: Epilogue;
   padding: 0;
   margin: 0;
-}
-
-button {
-  border: none;
-  background-color: var(--white);
 }

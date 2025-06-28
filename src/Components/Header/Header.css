@@ -1,18 +1,18 @@
 header {
-  width: 90%;
-  margin: auto;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 2rem;
+  align-items: center;
+  padding: 1.8rem;
 }
 
 .left {
-  width: 38%;
+  display: flex;
+  width: 52%;
+  gap: 4rem;
 }
 
 nav {
-  width: 80%;
+  width: 100%;
 }
 
 nav li {
@@ -24,6 +24,11 @@ nav li {
 .left {
   display: flex;
   justify-content: space-between;
+}
+
+.right {
+  display: flex;
+  gap: 2rem;
 }
 
 ul {

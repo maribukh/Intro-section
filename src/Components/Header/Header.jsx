@@ -6,7 +6,7 @@ import "../Header/Header.css";
 export default function Header() {
   return (
     <>
-      <header>
+      <header className="container">
         {" "}
         <div className="left">
           {" "}
@@ -26,7 +26,7 @@ export default function Header() {
         </div>
         <div className="right">
           <Button text="Login" />
-          <Button text="Register" />
+          <Button className="btn-outline" text="Register" />
         </div>
       </header>
     </>
