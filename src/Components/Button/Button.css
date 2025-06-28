@@ -3,6 +3,7 @@ button {
     background-color: var(--white);
     border-radius: 0.5rem;
     padding: 0.5rem;
+    font-size: 18pxs;
 }
 
 .btn-outline {
@@ -13,4 +14,10 @@ button {
 .btn-main {
     background-color: var(--black);
     color: var(--white);
+    width: fit-content;
+    padding: 1rem 1.8rem;
+}
+
+.btn:hover {
+    cursor: pointer;
 }

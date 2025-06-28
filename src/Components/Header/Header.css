@@ -2,10 +2,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.8rem;
+  padding: 1.8rem 0rem;
 }
 
-.left {
+header .left {
   display: flex;
   width: 52%;
   gap: 4rem;
@@ -21,12 +21,12 @@ nav li {
   gap: 8px;
 }
 
-.left {
-  display: flex;
-  justify-content: space-between;
+p {
+  margin: 1rem 0rem;
 }
 
 .right {
+  width: fit-content;
   display: flex;
   gap: 2rem;
 }
