@@ -21,6 +21,11 @@ nav li {
   gap: 8px;
 }
 
+nav li:hover {
+  cursor: pointer;
+  color: var(--mediumGrey);
+}
+
 p {
   margin: 1rem 0rem;
 }
@@ -35,4 +40,8 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.logo {
+  cursor: pointer;
 }

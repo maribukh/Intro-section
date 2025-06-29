@@ -10,7 +10,7 @@ export default function Header() {
         {" "}
         <div className="left">
           {" "}
-          <img src={logo} alt="loading..." />
+          <img  className="logo" src={logo} alt="loading..." />
           <nav>
             <ul>
               <li>

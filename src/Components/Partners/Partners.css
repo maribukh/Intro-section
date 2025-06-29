@@ -5,3 +5,7 @@
     justify-content: space-between;
     margin-top: 2.5rem;
 }
+
+.partner-section img:hover {
+    cursor: pointer;
+}
