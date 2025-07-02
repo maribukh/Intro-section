@@ -1,7 +1,7 @@
-import logo from "../../assets/logo.svg";
-import arrowDown from "../../assets/images/icon-arrow-down.svg";
-import Button from "../Button/Button";
-import "../Header/Header.css";
+import logo from "@/assets/logo.svg";
+import arrowDown from "@/assets/images/icon-arrow-down.svg";
+import Button from "@/Components/ui/Button/Button.jsx";
+import "./Header.css";
 
 export default function Header() {
   return (
@@ -10,7 +10,7 @@ export default function Header() {
         {" "}
         <div className="left">
           {" "}
-          <img  className="logo" src={logo} alt="loading..." />
+          <img className="logo" src={logo} alt="loading..." />
           <nav>
             <ul>
               <li>
@@ -26,7 +26,7 @@ export default function Header() {
         </div>
         <div className="right">
           <Button text="Login" />
-          <Button className="btn-outline" text="Register" />
+          <Button outlined text="Register" />
         </div>
       </header>
     </>

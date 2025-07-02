@@ -1,7 +1,8 @@
-import Button from "../Button/Button";
-import "../HeroSection/HeroSection.css";
-import Partners from "../Partners/Partners";
-import mainPic from "../../assets/images/image-hero-desktop.png";
+import Button from "@/Components/ui/Button/Button.jsx";
+import "./HeroSection.css";
+import Partners from "@/Components/ui/Partners/Partners.jsx";
+import mainPic from "@/assets/images/image-hero-desktop.png";
+
 
 export default function HeroSection() {
   return (
