@@ -3,7 +3,6 @@ import "./HeroSection.css";
 import Partners from "@/Components/ui/Partners/Partners.jsx";
 import mainPic from "@/assets/images/image-hero-desktop.png";
 
-
 export default function HeroSection() {
   return (
     <>
@@ -18,7 +17,7 @@ export default function HeroSection() {
               Get your team in sync, no matter your location. Streamline
               processes, create team rituale, and watch productivity soar.
             </p>
-            <Button className="btn-main" text="Learn More" />
+            <Button bgcolor className="btn-main" text="Learn More" />
           </div>
           <Partners />
         </div>
