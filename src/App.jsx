@@ -1,14 +1,14 @@
 import "./App.css";
 import Header from "./Components/layout/Header/Header";
 import HeroSections from "./Components/main/HeroSection/HeroSection";
-import UserList from "./Components/users/UserList";
+import UserForm from "./Components/users/UserForm/UserForm";
 
 function App() {
   return (
     <>
       <Header />
       <HeroSections />
-      <UserList />
+      <UserForm />
     </>
   );
 }

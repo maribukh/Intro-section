@@ -9,7 +9,6 @@ export default function HeroSection() {
       <div className="hero-container container">
         <div className="left">
           <div className="top">
-            {" "}
             <h1>
               Make <br /> remote work
             </h1>

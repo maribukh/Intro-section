@@ -17,12 +17,10 @@ button {
 }
 
 .btn-main {
-  background-image: linear-gradient(
-    to right,
-    #171718 0%,
-    #414345 51%,
-    #232526 100%
-  );
+  background-image: linear-gradient(to right,
+      #171718 0%,
+      #414345 51%,
+      #232526 100%);
 }
 
 .btn-main {
@@ -40,6 +38,10 @@ button {
   background-position: right center;
   color: var(--white);
   text-decoration: none;
+}
+
+.btn-delete {
+  background-color: #fffb00;
 }
 
 button:hover {
