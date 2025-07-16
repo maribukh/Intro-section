@@ -1,7 +1,9 @@
-import "../UserItem/UserItem.css";
+import { useEffect } from "react";
+import "../UserTable/UserTable.css";
 import Button from "@/Components/ui/Button/Button";
 
-export default function UserItem({ users, deleteUser }) {
+export default function UserTable({ users, deleteUser }) {
+
   return (
     <>
       <table>

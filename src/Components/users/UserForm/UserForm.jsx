@@ -1,9 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../UserForm/UserForm.css";
 import Button from "@/Components/ui/Button/Button";
-import UserItem from "../UserItem/UserItem";
+import UserTable from "../UserTable/UserTable";
 
 export default function UserForm() {
+  const [users, setUsers] = useState([]);
+
+  async function fetchUsers() {
+    const users = await fetch("https://dummyjson.com/users").then((res) =>
+      res.json()
+    );
+
+    return users;
+  }
+
+  useEffect(() => {
+    const bootstrapAsync = async () => {
+      const users = await fetchUsers();
+      setUsers(users.users);
+    };
+    bootstrapAsync();
+  }, []);
+
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -11,8 +29,6 @@ export default function UserForm() {
     department: "",
     gender: "",
   });
-
-  const [users, setUsers] = useState([]);
 
   function addUser(e) {
     e.preventDefault();
@@ -113,7 +129,7 @@ export default function UserForm() {
       </div>
       <div className="right">
         <h2>Users</h2>
-        <UserItem users={users} deleteUser={deleteUser} />
+        <UserTable users={users} deleteUser={deleteUser} />
       </div>
     </div>
   );
