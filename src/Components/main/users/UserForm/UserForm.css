@@ -58,3 +58,20 @@ input {
     width: 30%;
     padding-top: 2rem;
 }
+
+
+.box.has-error input {
+    border: 1px solid red;
+}
+
+.error {
+    color: red;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.error-text {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 4px;
+}

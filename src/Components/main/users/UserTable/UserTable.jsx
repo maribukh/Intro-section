@@ -1,9 +1,8 @@
 import { useEffect } from "react";
-import "../UserTable/UserTable.css";
+import "./UserTable.css";
 import Button from "@/Components/ui/Button/Button";
 
 export default function UserTable({ users, deleteUser }) {
-
   return (
     <>
       <table>
