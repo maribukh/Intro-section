@@ -1,103 +1,153 @@
-import { useEffect, useState } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import { useState } from "react";
 import "../UserForm/UserForm.css";
 import Button from "@/Components/ui/Button/Button";
 import UserTable from "../UserTable/UserTable";
+import { Formik } from "formik";
 
 export default function UserForm() {
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    department: "",
+    gender: "",
+  });
+
   const [users, setUsers] = useState([]);
 
-  async function fetchUsers() {
-    const data = await fetch("https://dummyjson.com/users").then((res) =>
-      res.json()
-    );
-    return data;
-  }
+  function addUser(e) {
+    e.preventDefault();
 
-  useEffect(() => {
-    const bootstrapAsync = async () => {
-      const data = await fetchUsers();
-      setUsers(data.users);
+    const { firstName, lastName, email, department, gender } = form;
+
+    if (!firstName || !lastName || !email || !department || !gender) {
+      alert("Please, fill all information!");
+      return;
+    }
+
+    const newUser = {
+      id: Date.now(),
+      ...form,
     };
-    bootstrapAsync();
-  }, []);
 
-  function deleteUser(id) {
-    setUsers(users.filter((user) => user.id !== id));
-  }
+    setUsers([...users, newUser]);
 
-  const formik = useFormik({
-    initialValues: {
+    setForm({
       firstName: "",
       lastName: "",
       email: "",
       department: "",
       gender: "",
-    },
-    validationSchema: Yup.object({
-      firstName: Yup.string().required("Required"),
-      lastName: Yup.string().required("Required"),
-      email: Yup.string().email("Invalid email").required("Required"),
-      department: Yup.string().required("Required"),
-      gender: Yup.string().required("Required"),
-    }),
-    onSubmit: (values, { resetForm }) => {
-      const newUser = {
-        id: Date.now(),
-        ...values,
-      };
-      setUsers([...users, newUser]);
-      resetForm();
-    },
-  });
+    });
+  }
+
+  function deleteUser(id) {
+    setUsers(users.filter((user) => user.id !== id));
+  }
+
+  
 
   return (
     <div className="container user-container">
       <div className="left">
         <h2>Add New User</h2>
-        <form onSubmit={formik.handleSubmit}>
-          {["firstName", "lastName", "department", "email"].map((field) => (
-            <div className="box" key={field}>
-              <label>{`Enter ${
-                field[0].toUpperCase() + field.slice(1)
-              }`}</label>
-              <input
-                name={field}
-                value={formik.values[field]}
-                onChange={formik.handleChange}
-              />
-              {formik.errors[field] && formik.touched[field] && (
-                <div className="error">{formik.errors[field]}</div>
-              )}
-            </div>
-          ))}
+        <Formik
+    initialValues={{
+      name: "",
+      lastname: " ",
+      department: " ",
+      email: " ",
+      gender: " ",
+    }}
+    validate={(values) => {
+      const errors = {};
+      if (
+        !values.name &&
+        !values.lastname &&
+        !values.department &&
+        !values.email &&
+        !values.gender
+      ) {
+        errors.name = "Required";
+        errors.lastName = "Required";
+        errors.department = "Required";
+        errors.email = "Required";
+        errors.gender = "Required";
+      }
+      return errors;
+    }}   >     ({
+         values,
+         errors,
+         touched,
+         handleChange,
+         handleBlur,
+         handleSubmit,
+         isSubmitting,
+         /* and other goodies */
+       }) => ( <form onSubmit={handleS}>
+          <div className="box">
+            <label>Enter Name</label>
+            <input
+              value={form.firstName}
+              type="text"
+              onChange={(e) => setForm({ ...form, firstName: e.target.value })}
+            />
+          </div>
+          <div className="box">
+            <label>Enter Lastname</label>
+            <input
+              value={form.lastName}
+              type="text"
+              onChange={(e) => setForm({ ...form, lastName: e.target.value })}
+            />
+          </div>
+          <div className="box">
+            <label>Enter Department</label>
+            <input
+              value={form.department}
+              type="text"
+              onChange={(e) => setForm({ ...form, department: e.target.value })}
+            />
+          </div>
+          <div className="box">
+            <label>Enter Email</label>
+            <input
+              value={form.email}
+              type="email"
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+            />
+          </div>
 
           <div className="box box-gender">
             <h4>Choose gender</h4>
             <div className="gender">
-              {["female", "male"].map((g) => (
-                <label key={g}>
-                  <input
-                    type="radio"
-                    name="gender"
-                    value={g}
-                    checked={formik.values.gender === g}
-                    onChange={formik.handleChange}
-                  />
-                  <span>{g[0].toUpperCase() + g.slice(1)}</span>
-                </label>
-              ))}
-              {formik.errors.gender && formik.touched.gender && (
-                <div className="error">{formik.errors.gender}</div>
-              )}
+              <label>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  checked={form.gender === "female"}
+                  onChange={(e) => setForm({ ...form, gender: e.target.value })}
+                />
+                <span>Female</span>
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  checked={form.gender === "male"}
+                  onChange={(e) => setForm({ ...form, gender: e.target.value })}
+                />
+                <span>Male</span>
+              </label>
             </div>
           </div>
 
           <Button type="submit" text="Add" bgcolor />
-        </form>
+        </form>)
+  </Formik>;
       </div>
-
       <div className="right">
         <h2>Users</h2>
         <UserTable users={users} deleteUser={deleteUser} />
